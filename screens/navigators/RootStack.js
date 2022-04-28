@@ -25,6 +25,8 @@ import inquiryPost from '../inquiryPost';
 import shopCart from '../shoppingCart';
 import profile from '../profile';
 import allProducts from '../allProducts';
+import ansReview from '../ansReview';
+
 
 // credentials context
 import { CredentialsContext } from '../../components/CredentialsContext';
@@ -88,6 +90,7 @@ const RootStack = () => {
                 {/* <Stack.Screen name="shopCart" component={shopCart} />  */}
                 <Stack.Screen name="profile" component={profile} /> 
                 <Stack.Screen name="allProducts" component={allProducts} /> 
+                <Stack.Screen name="ansReview" component={ansReview} /> 
                 
               </>
                 

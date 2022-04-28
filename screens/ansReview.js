@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { RadioButton,Text ,Dialog, Portal,Modal,Button,BackHandler} from 'react-native-paper';
+import { RadioButton,Text ,Dialog, Portal,Modal,Button} from 'react-native-paper';
 
 // formik
 import { Formik } from 'formik';
@@ -48,53 +48,17 @@ import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
 
 // api client
 import axios from 'axios';
-import NotiificationCard from './../components/NotiificationCard';
+import NotiificationCard from '../components/NotiificationCard';
 // Async storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // credentials context
 import { CredentialsContext } from '../components/CredentialsContext';
-import {scoreContext} from '../components/stateProvider';
-
 
 import DropDownPicker from 'react-native-dropdown-picker';
 import QuizeCard from '../components/QuizCard';
 
-const allProducts = ({route, navigation }) => {
-
-  const { itemId, otherParam } = route.params;
-
-  const { storedScore, setStoredScore } = useContext(scoreContext);
-  // const { user_id,marks,question_category,attend_date } = storedScore;
-
-  // credentials context
-
-
-  // console.log(otherParam);
-  // back navi handle
-  
-  // useEffect(() => {
-  //   const backAction = () => {
-  //     Alert.alert("Hold on!", "Are you sure you want to go back?", [
-  //       {
-  //         text: "Cancel",
-  //         onPress: () => null,
-  //         style: "cancel"
-  //       },
-  //       { text: "YES", onPress: () => BackHandler.exitApp() }
-  //     ]);
-  //     return true;
-  //   };
-
-  //   const backHandler = BackHandler.addEventListener(
-  //     "hardwareBackPress",
-  //     backAction
-  //   );
-
-  //   return () => backHandler.remove();
-  // }, []);
-  // -----------------
-
+const allProducts = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [show, setShow] = useState(false);
   const [date, setDate] = useState(new Date(2000, 0, 1));
@@ -124,7 +88,7 @@ const allProducts = ({route, navigation }) => {
 
   // credentials context
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
-  const { _id,name, email, photoUrl } = storedCredentials;
+  const { name, email, photoUrl } = storedCredentials;
   // Form handling
   
   const [visible1, setvisible1] = useState(false);
@@ -134,13 +98,12 @@ const allProducts = ({route, navigation }) => {
     setTimeout(() => {
       axios
         .get(
-          'https://maths-buddy.herokuapp.com/question/getcategory/'+otherParam,
+          'https://maths-buddy.herokuapp.com/question/getcategory/Geometry1',
         )
         .then(function (response1) {
           setDataNewArri(response1.data.question);
           // console.log(response1.data.question);
           LoadDetails2();
-          attendMe();
         })
         .catch(function (error) {
           console.log(error);
@@ -155,33 +118,6 @@ const allProducts = ({route, navigation }) => {
     setvisible1(!visible1);
   };
 
-const attendQuiz={
-    "user_id": _id,
-    "question_category": otherParam,
-    "marks": 0,
-    "date": new Date()
-}
-const clearLogin = () => {
-  AsyncStorage.removeItem('attendUserQuiz')
-    .then(() => {
-      setStoredScore('');
-    })
-    .catch(error => console.log(error));
-};
-// attend quiz
-  const attendMe=() => {
-    clearLogin();  
-  
-    AsyncStorage.setItem('attendUserQuiz', JSON.stringify(attendQuiz))
-      .then(() => {
-        setStoredScore(attendQuiz);
-        console.log(storedScore,'==> all quiz');
-      })
-      .catch((error) => {
-        console.log(error)
-      });
-  }
-
   return (
     <StyledContainer>
       <StatusBar style="dark" />
@@ -192,8 +128,7 @@ const clearLogin = () => {
             <Space/>
               
               {visible1 ? (
-                            
-                <BestSellerContainer style={styles.row1} >
+                <BestSellerContainer style={styles.row1}>
                   <View style={styles.row11}>
                   {/* <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}> */}
                     <ScrollView showsScrollIndicator={false} showsHorizontalScrollIndicator={false}>

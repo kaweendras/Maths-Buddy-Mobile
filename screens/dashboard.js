@@ -57,12 +57,12 @@ const dashboard = ({ navigation }) => {
     setTimeout(() => {
       axios
         .get(
-          'https://maths-buddy.herokuapp.com/question/',
+          'https://maths-buddy.herokuapp.com/category',
         )
         .then(function (response) {
-          // setData(response.data);
-          console.log(response.data.questions[0].category);
-          // LoadDetails();
+          setData(response.data.categories);
+          console.log(response.data.categories);
+          LoadDetails();
         })
         .catch(function (error) {
           console.log(error);
@@ -70,74 +70,27 @@ const dashboard = ({ navigation }) => {
     }, 0);
   }, []);
 
-const [visible2, setvisible2] = useState(false);
-  const [dataCategory, setData2] = useState([[]]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      axios
-        .get(
-          'https://abhiru.lk/wp-json/wc/v3/products/categories/?consumer_key=ck_59e560508086c25e01054ab8f4de6599900cb9a1&consumer_secret=cs_f55cf613bfcf7b2d5892016d8eaefa73a9b1bfeb',
-        )
-        .then(function (response2) {
-          setData2(response2.data);
-          console.log(response2.data[0].images[0].src);
-          LoadDetails2();
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }, 0);
-  }, []);
-
-  const [visible1, setvisible1] = useState(false);
-  const [dataNewArri, setDataNewArri] = useState([[]]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      axios
-        .get(
-          'https://abhiru.lk/wp-json/wc/v3/products/?tag=877&consumer_key=ck_59e560508086c25e01054ab8f4de6599900cb9a1&consumer_secret=cs_f55cf613bfcf7b2d5892016d8eaefa73a9b1bfeb',
-        )
-        .then(function (response1) {
-          setDataNewArri(response1.data);
-          console.log(response1.data[0].images[0].src);
-          LoadDetails1();
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }, 0);
-  }, []);
 
   if (dataBestSellers.length === 0) {
     return null;
   }
 
-  if (dataNewArri.length === 0) {
-    return null;
-  }
+  // if (dataNewArri.length === 0) {
+  //   return null;
+  // }
   
-  if (dataCategory.length === 0) {
-    return null;
-  }
+  // if (dataCategory.length === 0) {
+  //   return null;
+  // }
   const LoadDetails = () => {
     setvisible(!visible);
   };
 
-  const LoadDetails1 = () => {
-    setvisible1(!visible1);
-  };
-
-  const LoadDetails2 = () => {
-    setvisible2(!visible2);
-  };
-  
   // credentials context
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
 
-  const { name,first_name,last_name, photoUrl } = storedCredentials;
-// console.log(storedCredentials.first_name)
+  const { _id,name,first_name,last_name, photoUrl } = storedCredentials;
+// console.log(storedCredentials._id)
 
 
   // Navigate flows
@@ -155,7 +108,7 @@ const [visible2, setvisible2] = useState(false);
   };
 
   const allpro = () => {
-    navigation.navigate('allProducts');
+    navigation.navigate('allProducts',{itemId: 2,otherParam: 'Geometry1'});
   };
 
   const [text, onChangeText] = React.useState('');
@@ -217,17 +170,17 @@ const [visible2, setvisible2] = useState(false);
             <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
               <ExtraText style={styles.HeaderButtonText}> Quizzes </ExtraText>
               {visible ? (
-                <BestSellerContainer>
+                <BestSellerContainer style={styles.row112}>
                   <View style={styles.row11}>
                     <ScrollView horizontal={true} showsScrollIndicator={false} showsHorizontalScrollIndicator={false}>
                       {dataBestSellers.map((noti, index) => {
-                        console.log(noti.id)
+                        // console.log(noti.id)
                         return (
                           <NotiificationCard
-                            id={noti.id}
-                            name={noti.name}
-                            price={noti.price}
-                            image={noti.images[0].src}
+                            id={index}
+                            name={noti}
+                            // price={noti.price}
+                            // image={noti.images[0].src}
                           />
                         );
                       })}
@@ -320,11 +273,19 @@ const styles = StyleSheet.create({
   },
 
   row11: {
-    margin: 30,
-    marginBottom: 10,
-    marginTop: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    display: "flex",
+    // flexDirection: "vertical",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    // margin: 30,
+    // marginBottom: 10,
+    // marginTop: 10,
+    // // flexDirection: 'row',
+    // justifyContent: 'space-between',
+  },
+
+  row112: {
+    backgroundColor:Colors.primary,
   },
 
   HeaderButtonText: {

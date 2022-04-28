@@ -49,7 +49,6 @@ export const WelcomeContainer = styled(InnerContainer)`
 
 export const BestSellerContainer = styled.View`
   width: 100%;
-  margin-top: 2%;
   flex:1;
   background-color: ${Colors.darkLight};
 
@@ -57,7 +56,7 @@ export const BestSellerContainer = styled.View`
 
 export const ImgSliderContainer = styled(InnerContainer)`
   width: 100%;
-  height: 10px;
+  height: 12px;
   flex: 1;
 `;
 

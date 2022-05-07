@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { RadioButton,Text ,Dialog, Portal,Modal,Button,BackHandler} from 'react-native-paper';
+import { RadioButton,Paragraph, Provider,Text ,Dialog, Portal,Modal,Button,BackHandler} from 'react-native-paper';
 
 // formik
 import { Formik } from 'formik';
@@ -32,7 +32,7 @@ import {
   Avatar,
   Colors,
 } from '../components/styles';
-import { View, TouchableOpacity, Linking, Image, StyleSheet, ScrollView, Picker, ActivityIndicator } from 'react-native';
+import { View, TouchableOpacity, Linking, Image, StyleSheet, ScrollView, Picker, ActivityIndicator,Alert } from 'react-native';
 
 //colors
 const { darkLight, brand, primary } = Colors;
@@ -61,6 +61,12 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import QuizeCard from '../components/QuizCard';
 
 const allProducts = ({route, navigation }) => {
+  
+  const [visible, setVisible] = React.useState(false);
+
+  const showDialog = () => setVisible(true);
+
+  const hideDialog = () => setVisible(false);
 
   const { itemId, otherParam } = route.params;
 
@@ -106,7 +112,7 @@ const allProducts = ({route, navigation }) => {
   const [messageType, setMessageType] = useState();
   
   // modal
-  const [visible, setVisible] = React.useState(false);
+  // const [visible, setVisible] = React.useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -185,6 +191,31 @@ const clearLogin = () => {
       });
   }
 
+  const getMarks=() => {
+    
+    AsyncStorage.getItem( 'attendUserQuiz' )
+        .then( data => {
+          JSON.parse(data);
+          // the string value read from AsyncStorage has been assigned to data
+          // console.log( data );
+    
+          // transform it back to an object
+          // setStoredScore (JSON.stringify(data));
+        console.log(JSON.parse(data).marks);
+    
+          // console.log(data);
+          
+          Alert.alert(
+                                "Congrats",
+            "Hello, Your marks "+ JSON.parse(data).marks*10 +"/ 100",
+            [
+              { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+          );
+          
+        })
+  }
+
   return (
     <StyledContainer>
       <StatusBar style="dark" />
@@ -214,12 +245,14 @@ const clearLogin = () => {
                             ans4={noti11.sample_answers.split(',')[3]}
                             qimage={noti11.question}
                             i={index}
+                            m={0}
                           />
                         );
                       })}
-                      <Button icon="content-save-move" mode="contained" onPress={() => ansRev()}>
+                      <Button icon="content-save-move" mode="contained" onPress={() => getMarks()}>
                         Confirm and Finished
                       </Button>
+                      
                     </ScrollView>
                   </View>
                   {/* </Modal> */}

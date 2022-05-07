@@ -30,7 +30,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // ---------------
 const m=0;
 let mark=m;
+let userd;
 
+AsyncStorage.getItem( 'attendUserQuiz' )
+    .then( data => {
+
+      // the string value read from AsyncStorage has been assigned to data
+      // console.log( data );
+
+      // transform it back to an object
+      // setStoredScore (JSON.stringify(data));
+    // console.log(data,'--->quiz card');
+    userd=data;
+      console.log(userd);
+
+    })
 const QuizCard = (props) => {
 
 const [value, setValue] = React.useState();

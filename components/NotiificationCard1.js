@@ -1,11 +1,38 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
-import { Colors, ExtraText } from './styles';
-import shopCart from '../screens/shoppingCart';
-
+import {    StyledContainer,
+  PageTitle,
+  StyledInputLabel,
+  StyledFormArea,
+  StyledButton,
+  StyledTextInput,
+  LeftIcon,
+  RightIcon,
+  InnerContainer,
+  ButtonText,
+  MsgBox,
+  WelcomeContainer,
+  Line,
+  Space,
+  BestSellerContainer,
+  WelcomeImage,
+  ExtraView,
+  ExtraText,
+  ExtraText2,
+  ExtraText3,
+  ExtraText4,
+  ExtraText5,
+  TextLink,
+  TextLinkContent,
+  SubTitle,
+  Avatar,
+  Colors,
+        } from './styles';
+// import shopCart from '../screens/shoppingCart';
+import moment from 'moment';
 const NotiificationCard1 = (props) => {
   return (
-    <View style={styles.item}>
+    <View style={styles.row11}>
       {/* <Image
         source={{
           uri: props.image,
@@ -13,18 +40,31 @@ const NotiificationCard1 = (props) => {
         style={styles.itemPhoto}
         resizeMode="cover"
       /> */}
-      <ExtraText style={styles.itemText}>{props.name}</ExtraText>
+      <ButtonText style={styles.ButtonText1}>{moment(new Date(props.date)).format('YYYY-MM-DD')}</ButtonText>
+      <ExtraText style={styles.itemText}>Category : {props.qcat}</ExtraText>
+      <ExtraText style={styles.itemText}>Marks : {props.marks}</ExtraText>
+      
+      
       {/* <ExtraText style={styles.itemText1}> Rs. {props.price}</ExtraText> */}
-      <TouchableOpacity style={[styles.container, { backgroundColor: Colors.black }]}>
-        <View style={styles.button} >
-          <Text style={styles.text}>View All </Text>
-        </View>
-      </TouchableOpacity>
+      {/* <TouchableOpacity style={[styles.container, { backgroundColor: Colors.black }]}>
+        
+      </TouchableOpacity> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+
+  row11: {
+    // marginTop: '5%',
+    backgroundColor:Colors.PearlAsh,
+    // width:'90%',
+    borderRadius:20,
+    paddingLeft:'10%',
+    padding:'10%',
+    marginBottom:'15%',
+  },
+
   card: {
     marginVertical: 10,
     backgroundColor: '#D7D7D7',
@@ -44,6 +84,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 1.5,
   },
+  
+  ButtonText1: {
+    color:Colors.darkLight,
+    fontWeight: 'bold',
+    fontSize: 18,
+    lineHeight: 50,
+    textAlign:'justify',
+  },
+
   item: {
     alignSelf: 'auto',
     minWidth: 120,
@@ -67,9 +116,11 @@ const styles = StyleSheet.create({
   },
   
   itemText: {
-    color: Colors.black,
-    marginTop: 5,
-    justifyContent: 'center',
+    // color: Colors.black,
+    // marginTop: 5,
+    fontWeight: 'bold',
+    fontSize: 15,
+    // justifyContent: 'center',
   },
 
   text: {

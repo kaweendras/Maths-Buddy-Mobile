@@ -86,12 +86,12 @@ const profile = ({ navigation }) => {
     
   // navigation History
   const History = () => {
-      navigation.navigate('history');
+      navigation.navigate('history',{itemId: 3,userIDParam: _id});
     };
 
   // credentials context
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
-  const { first_name,last_name, email, photoUrl } = storedCredentials;
+  const { _id,first_name,last_name, email, photoUrl } = storedCredentials;
   // Form handling
 
   const [open, setOpen] = useState(false);

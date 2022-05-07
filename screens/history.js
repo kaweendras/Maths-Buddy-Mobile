@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 
 // formik
@@ -58,52 +58,55 @@ import { CredentialsContext } from '../components/CredentialsContext';
 
 import DropDownPicker from 'react-native-dropdown-picker';
 import { BorderlessButton } from 'react-native-gesture-handler';
+import NotiificationCard1 from '../components/NotiificationCard1';
 
-const history = ({ navigation }) => {
-  const [hidePassword, setHidePassword] = useState(true);
-  const [show, setShow] = useState(false);
-  const [date, setDate] = useState(new Date(2000, 0, 1));
-  const [message, setMessage] = useState();
-  const [messageType, setMessageType] = useState();
 
-  // Actual value to be sent
-  const [dob, setDob] = useState();
+const history = ({route, navigation }) => {
 
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(false);
-    setDate(currentDate);
-    setDob(currentDate);
+  const [visible, setvisible] = useState(false);
+  const [dataBestSellers, setData] = useState([[]]);
+
+  const { itemId, userIDParam } = route.params;
+
+  useEffect(() => {
+    setTimeout(() => {
+      axios
+        .get(
+          'https://maths-buddy.herokuapp.com/history/byuser/'+userIDParam,
+        )
+        .then(function (response) {
+          setData(response.data.history);
+          console.log(response.data.history);
+          LoadDetails();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, 0);
+  }, []);
+
+
+  if (dataBestSellers.length === 0) {
+    return null;
+  }
+
+  // if (dataNewArri.length === 0) {
+  //   return null;
+  // }
+  
+  // if (dataCategory.length === 0) {
+  //   return null;
+  // }
+
+  
+  const LoadDetails = () => {
+    setvisible(!visible);
   };
-
-  const showDatePicker = () => {
-    setShow('date');
-  };
-  // navigation
-  const contact = () => {
-    navigation.navigate('inquiryPost');
-  };
-    
-  // navigation History
-  const History = () => {
-      navigation.navigate('inquiryPost');
-    };
 
   // credentials context
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
   const { first_name,last_name, email, photoUrl } = storedCredentials;
   // Form handling
-
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-
-  const clearLogin = () => {
-    AsyncStorage.removeItem('flowerCribCredentials')
-      .then(() => {
-        setStoredCredentials('');
-      })
-      .catch(error => console.log(error));
-  };
   return (
     <StyledContainer>
       <StatusBar style="dark" />
@@ -115,20 +118,31 @@ const history = ({ navigation }) => {
         <ExtraText5>{email}</ExtraText5>
 
             
-          <BestSellerContainer style={styles.row11}>
-            <ExtraText5 >
-              <ButtonText style={styles.ButtonText1}>Profile Settings</ButtonText>
-            </ExtraText5>
+        <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
 
-            <ExtraText5  onPress={History}>
-              <ButtonText style={styles.ButtonText1}>History</ButtonText>
-            </ExtraText5>
+              {visible ? (
+                <BestSellerContainer style={styles.row11}>
+                  <View style={styles.row11}>
+                    {/* <ScrollView horizontal={true} showsScrollIndicator={false} showsHorizontalScrollIndicator={false}> */}
+                      {dataBestSellers.map((noti, index) => {
+                        // console.log(noti.id)
+                        return (
+                          <NotiificationCard1
+                            id={noti._id}
+                            date={noti.date}
+                            marks={noti.marks}
+                            qcat={noti.question_category}
+                          />
+                        );
+                      })}
+                    {/* </ScrollView> */}
+                  </View>
+                </BestSellerContainer>
+              ) : null}
 
-            <ExtraText5 >
-              <ButtonText style={styles.ButtonText1}>Favourite</ButtonText>
-            </ExtraText5>
+              <Space/>
 
-          </BestSellerContainer>
+            </ScrollView>
 
       </InnerContainer>
     </StyledContainer>
@@ -148,6 +162,10 @@ const styles = StyleSheet.create({
     height: '15%',
     marginBottom: '5%',
     marginTop: '5%',
+  },
+
+  row112: {
+    backgroundColor:Colors.primary,
   },
 
   ButtonText1: {
@@ -198,11 +216,11 @@ const styles = StyleSheet.create({
   row11: {
     marginTop: '5%',
     backgroundColor:primary,
-    width:'80%',
+    width:'100%',
     borderRadius:20,
-    paddingLeft:'10%',
-    padding:'5%',
-    marginBottom:'10%',
+    paddingLeft:'5%',
+    padding:'2%',
+    marginBottom:'5%',
   },
 });
 

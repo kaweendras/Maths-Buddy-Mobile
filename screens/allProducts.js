@@ -65,7 +65,11 @@ const allProducts = ({route, navigation }) => {
   const { itemId, otherParam } = route.params;
 
   const { storedScore, setStoredScore } = useContext(scoreContext);
-  // const { user_id,marks,question_category,attend_date } = storedScore;
+  const { user_id,marks,question_category,attend_date } = storedScore;
+
+  const ansRev = () => {
+    navigation.navigate('ansReview',{itemId: 3,otherParam: 'Geometry1'});
+  };
 
   // credentials context
 
@@ -175,7 +179,6 @@ const clearLogin = () => {
     AsyncStorage.setItem('attendUserQuiz', JSON.stringify(attendQuiz))
       .then(() => {
         setStoredScore(attendQuiz);
-        console.log(storedScore,'==> all quiz');
       })
       .catch((error) => {
         console.log(error)
@@ -214,7 +217,7 @@ const clearLogin = () => {
                           />
                         );
                       })}
-                      <Button icon="content-save-move" mode="contained" onPress={() => console.log("fav")}>
+                      <Button icon="content-save-move" mode="contained" onPress={() => ansRev()}>
                         Confirm and Finished
                       </Button>
                     </ScrollView>

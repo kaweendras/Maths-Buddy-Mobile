@@ -59,7 +59,7 @@ import { CredentialsContext } from '../components/CredentialsContext';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
-const profile = ({ navigation }) => {
+const history = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [show, setShow] = useState(false);
   const [date, setDate] = useState(new Date(2000, 0, 1));
@@ -86,7 +86,7 @@ const profile = ({ navigation }) => {
     
   // navigation History
   const History = () => {
-      navigation.navigate('history');
+      navigation.navigate('inquiryPost');
     };
 
   // credentials context
@@ -108,7 +108,7 @@ const profile = ({ navigation }) => {
     <StyledContainer>
       <StatusBar style="dark" />
       <InnerContainer>
-        <PageTitle> Profile </PageTitle>
+        <PageTitle> History </PageTitle>
         <Image resizeMode="cover" justifyContent="center" source={require('./../assets/avatar-man.png')}/>
         
         <ExtraText4>{first_name+" "+last_name}</ExtraText4>
@@ -129,22 +129,6 @@ const profile = ({ navigation }) => {
             </ExtraText5>
 
           </BestSellerContainer>
-
-          <BestSellerContainer style={styles.row11}>
-            
-            <ExtraText5 >
-              <ButtonText style={styles.ButtonText1}>Terms and Conditions</ButtonText>
-            </ExtraText5>
-
-            <ExtraText5 onPress={contact}>
-              <ButtonText style={styles.ButtonText1}>About Us</ButtonText>
-            </ExtraText5>
-
-            <ExtraText5  onPress={clearLogin}>
-                <ButtonText style={styles.ButtonText11}>Logout</ButtonText>
-            </ExtraText5>
-          
-          </BestSellerContainer>  
 
       </InnerContainer>
     </StyledContainer>
@@ -222,4 +206,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default profile;
+export default history;

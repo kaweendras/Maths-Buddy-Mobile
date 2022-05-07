@@ -56,9 +56,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CredentialsContext } from '../components/CredentialsContext';
 
 import DropDownPicker from 'react-native-dropdown-picker';
-import QuizeCard from '../components/QuizCard';
+import AnsReviewCard from '../components/AnsReviewCard';
 
-const allProducts = ({ navigation }) => {
+const ansreview = ({route, navigation }) => {
+
+  const { itemId, otherParam } = route.params;
+
   const [hidePassword, setHidePassword] = useState(true);
   const [show, setShow] = useState(false);
   const [date, setDate] = useState(new Date(2000, 0, 1));
@@ -98,7 +101,7 @@ const allProducts = ({ navigation }) => {
     setTimeout(() => {
       axios
         .get(
-          'https://maths-buddy.herokuapp.com/question/getcategory/Geometry1',
+          'https://maths-buddy.herokuapp.com/question/getcategory/'+otherParam,
         )
         .then(function (response1) {
           setDataNewArri(response1.data.question);
@@ -122,7 +125,7 @@ const allProducts = ({ navigation }) => {
     <StyledContainer>
       <StatusBar style="dark" />
       <InnerContainer>
-        <PageTitle> Quize </PageTitle>
+        <PageTitle> Answer Review </PageTitle>
             <StyledFormArea>
             
             <Space/>
@@ -135,22 +138,22 @@ const allProducts = ({ navigation }) => {
                       {dataAllProd.map((noti11, index) => {
                         // console.log(index)
                         return (
-                          <QuizeCard
+                          <AnsReviewCard
                             key={index}
                             id={noti11.id}
-                            quiz={noti11.guide}
+                            guide={noti11.guide}
                             ans={noti11.answer}
-                            ans1={noti11.sample_answers.split(',')[0]}
-                            ans2={noti11.sample_answers.split(',')[1]}
-                            ans3={noti11.sample_answers.split(',')[2]}
-                            ans4={noti11.sample_answers.split(',')[3]}
+                            // ans1={noti11.sample_answers.split(',')[0]}
+                            // ans2={noti11.sample_answers.split(',')[1]}
+                            // ans3={noti11.sample_answers.split(',')[2]}
+                            // ans4={noti11.sample_answers.split(',')[3]}
                             qimage={noti11.question}
                             i={index}
                           />
                         );
                       })}
-                      <Button icon="content-save-move" mode="contained" onPress={() => console.log("fav")}>
-                        Confirm and Finished
+                      <Button icon="location-exit" mode="contained" onPress={() => console.log("fav")}>
+                        Exit
                       </Button>
                     </ScrollView>
                   </View>
@@ -241,4 +244,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default allProducts;
+export default ansreview;

@@ -1,4 +1,4 @@
-import React,{useState , useContext} from 'react';
+import React,{useEffect, useState, useContext} from 'react';
 import { View, TouchableOpacity, StyleSheet, Image ,ScrollView} from 'react-native';
 import { Colors, ExtraText ,StyledButton} from './styles';
 import {scoreContext} from '../components/stateProvider';
@@ -28,12 +28,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // ---------------
+const m=0;
+let mark=m;
 
 const QuizCard = (props) => {
 
 const [value, setValue] = React.useState();
 const [enable, setEnable] = useState(false);
-// const [marks, updateMarks] = useState(0.0);
+const [markss, updateMarks] = useState(0);
 // const [{score}, dispatch] = useState();
 // const updateScore = Score => {
 //   dispatch({
@@ -43,6 +45,8 @@ const [enable, setEnable] = useState(false);
 // };
 const { storedScore, setStoredScore } = useContext(scoreContext);
 const { user_id,marks,question_category,date } = storedScore;
+
+// console.log(storedScore,'==> all quiz');
 
 // AsyncStorage.getItem( 'attendUserQuiz' )
 //     .then( data => {
@@ -65,17 +69,31 @@ const { user_id,marks,question_category,date } = storedScore;
 // }
 
 const updateScore=(m)=>{
-// AsyncStorage.setItem('attendUserQuiz', JSON.stringify({'marks':m},['marks']))
-//   .then(() => {  
-//     // setStoredScore({'marks':m},['marks']);
 
-//   })
-//   .catch((error) => {
-//     console.log(error,'catch')
-//   });
+AsyncStorage.setItem('attendUserQuiz', JSON.stringify({'marks':m},['marks']))
+  .then(() => {  
+    setStoredScore({'marks':m},['marks']);
+
+  })
+  .catch((error) => {
+    console.log(error,'catch')
+  });
 }
 
 const saveOpt = (x,ans,i) => { 
+
+// AsyncStorage.getItem( 'attendUserQuiz' )
+// .then( data => {
+
+//   // the string value read from AsyncStorage has been assigned to data
+//   // console.log( data );
+
+//   // transform it back to an object
+//   setStoredScore (JSON.stringify(data));
+// console.log(marks,'--->quiz card');
+
+//   // console.log(data);
+// })
   // console.log(storedScore.marks,' --->test');
   
   //   // if (props.qnIndex + 1 >= Questions.questions.length) {
@@ -88,10 +106,14 @@ const saveOpt = (x,ans,i) => {
   //   // }
 
 
-    // x.trim() === ans.trim()
-  //   ? updateScore(marks+1)
-  //   : updateScore(marks+0);
-  console.log(user_id);
+    x.trim() === ans.trim()
+    ? mark=mark+1
+    : mark=mark+0 ;
+  console.log(mark);
+  updateScore(mark);
+    // ? updateMarks(1)
+    // : updateMarks(0) ;
+  // console.log(mark);
   
 };
 

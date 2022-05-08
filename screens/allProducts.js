@@ -235,7 +235,7 @@ const clearLogin = () => {
     <StyledContainer>
       <StatusBar style="dark" />
       <InnerContainer>
-        <PageTitle> Quize </PageTitle>
+        <PageTitle> Quiz -  {otherParam} </PageTitle>
             <StyledFormArea>
             
             <Space/>

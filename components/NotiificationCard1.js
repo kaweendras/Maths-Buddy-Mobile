@@ -28,27 +28,20 @@ import {    StyledContainer,
   Avatar,
   Colors,
         } from './styles';
-// import shopCart from '../screens/shoppingCart';
 import moment from 'moment';
 const NotiificationCard1 = (props) => {
+  var myInt = parseInt(props.marks);
+  myInt = myInt * 10;
+  myInt = myInt.toString();
   return (
     <View style={styles.row11}>
-      {/* <Image
-        source={{
-          uri: props.image,
-        }}
-        style={styles.itemPhoto}
-        resizeMode="cover"
-      /> */}
+     
       <ButtonText style={styles.ButtonText1}>{moment(new Date(props.date)).format('YYYY-MM-DD')}</ButtonText>
       <ExtraText style={styles.itemText}>Category : {props.qcat}</ExtraText>
-      <ExtraText style={styles.itemText}>Marks : {props.marks}</ExtraText>
+      <ExtraText style={styles.itemText}>Marks : {myInt}</ExtraText>
       
       
-      {/* <ExtraText style={styles.itemText1}> Rs. {props.price}</ExtraText> */}
-      {/* <TouchableOpacity style={[styles.container, { backgroundColor: Colors.black }]}>
-        
-      </TouchableOpacity> */}
+      
     </View>
   );
 };

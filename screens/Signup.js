@@ -156,7 +156,7 @@ const Signup = ({ navigation }) => {
               <StyledFormArea>
                 <MyTextInput
                   label="First Name"
-                  placeholder="Yashodha"
+                  placeholder="First Name"
                   placeholderTextColor={darkLight}
                   onChangeText={handleChange('first_name')}
                   onBlur={handleBlur('first_name')}

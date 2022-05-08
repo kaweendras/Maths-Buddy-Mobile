@@ -73,13 +73,7 @@ const isEnable= ()=>{ setEnable(true); }
 const functioncombiner=(x,ans,i) => { 
   let qno=i+1;
   Speech.speak("the Question "+ qno + "answer is "+ans+". "+x, )
-  // {
-  //   androidParams: {
-  //     KEY_PARAM_PAN: -1,
-  //     KEY_PARAM_VOLUME: 0.5,
-  //     KEY_PARAM_STREAM: 'STREAM_MUSIC',
-  //   },
-  // });
+
 }
 
     return (

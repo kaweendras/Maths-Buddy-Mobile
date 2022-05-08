@@ -158,7 +158,7 @@ const ansreview = ({route, navigation }) => {
                         );
                       })}
                       <Button icon="location-exit" mode="contained" onPress={() => profile()}>
-                        Exit
+                        Exit to Home
                       </Button>
                     </ScrollView>
                   </View>

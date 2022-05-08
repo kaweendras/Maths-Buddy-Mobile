@@ -124,9 +124,9 @@ const profile = ({ navigation }) => {
               <ButtonText style={styles.ButtonText1}>History</ButtonText>
             </ExtraText5>
 
-            <ExtraText5 >
+            {/* <ExtraText5 >
               <ButtonText style={styles.ButtonText1}>Favourite</ButtonText>
-            </ExtraText5>
+            </ExtraText5> */}
 
           </BestSellerContainer>
 

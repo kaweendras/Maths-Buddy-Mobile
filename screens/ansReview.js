@@ -56,7 +56,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CredentialsContext } from '../components/CredentialsContext';
 
 import DropDownPicker from 'react-native-dropdown-picker';
-import AnsReviewCard from '../components/AnsReviewCard';
+// import AnsReviewCard from '../components/AnsReviewCard';
+import AnsReviewCard from "../components/ansReviewCard"
 
 const ansreview = ({route, navigation }) => {
 

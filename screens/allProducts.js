@@ -73,8 +73,23 @@ const allProducts = ({route, navigation }) => {
   const { storedScore, setStoredScore } = useContext(scoreContext);
   const { user_id,marks,question_category,attend_date } = storedScore;
 
-  const ansRev = () => {
-    navigation.navigate('ansReview',{itemId: 3,otherParam: 'Geometry1'});
+
+
+  const ansRev = (m) => {
+    navigation.navigate('ansReview',{itemId: 3,otherParam: otherParam});
+    
+    const updateQuizMarks={
+      "user_id": _id,
+      "question_category": otherParam,
+      "marks": m,
+    }
+    const url = 'https://maths-buddy.herokuapp.com/history/add';
+    axios
+      .post(url, updateQuizMarks)
+      .then((response) => {
+        const result = response.data;
+        console.log(result)
+      })
   };
 
   // credentials context
@@ -209,7 +224,7 @@ const clearLogin = () => {
                                 "Congrats",
             "Hello, Your marks "+ JSON.parse(data).marks*10 +"/ 100",
             [
-              { text: "OK", onPress: () => console.log("OK Pressed") }
+              { text: "OK", onPress: () => ansRev(JSON.parse(data).marks) }
             ]
           );
           

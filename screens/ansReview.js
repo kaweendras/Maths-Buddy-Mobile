@@ -85,6 +85,10 @@ const ansreview = ({route, navigation }) => {
     setDob(currentDate);
   };
 
+  const profile = () => {
+    navigation.navigate('home');
+  };
+
   const showDatePicker = () => {
     setShow('date');
   };
@@ -152,7 +156,7 @@ const ansreview = ({route, navigation }) => {
                           />
                         );
                       })}
-                      <Button icon="location-exit" mode="contained" onPress={() => console.log("fav")}>
+                      <Button icon="location-exit" mode="contained" onPress={() => profile()}>
                         Exit
                       </Button>
                     </ScrollView>

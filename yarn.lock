@@ -2515,12 +2515,12 @@
   "version" "0.0.0"
 
 "accepts@~1.3.5", "accepts@~1.3.7":
-  "integrity" "sha512-Il80Qs2WjYlJIBNzNkK6KYqlVMTbZLXgHx2oT0pU/fjRHyEp+PEfEPY0R3WCwAGVOtauxh1hOxNgIf5bv7dQpA=="
-  "resolved" "https://registry.npmjs.org/accepts/-/accepts-1.3.7.tgz"
-  "version" "1.3.7"
+  "integrity" "sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw=="
+  "resolved" "https://registry.npmjs.org/accepts/-/accepts-1.3.8.tgz"
+  "version" "1.3.8"
   dependencies:
-    "mime-types" "~2.1.24"
-    "negotiator" "0.6.2"
+    "mime-types" "~2.1.34"
+    "negotiator" "0.6.3"
 
 "acorn-globals@^6.0.0":
   "integrity" "sha512-ZQl7LOWaF5ePqqcX4hLuv/bLXYQNfNWw2c0/yX/TsPRKamzHcTGQnlCjHT3TsmkOUVEPS3crCxiPfdzE/Trlhg=="
@@ -4101,7 +4101,7 @@
     "jest-matcher-utils" "^27.5.1"
     "jest-message-util" "^27.5.1"
 
-"expo-app-loading@^1.1.2":
+"expo-app-loading@1.1.2":
   "integrity" "sha512-JdWa9CpB4LpIYgh9WLhpr5KoMOaBob03yBcKdSw1TIDgYUtCGfRLouxadpVOtkudY1x4/NN4ZZrH7Y5nB3SdlA=="
   "resolved" "https://registry.npmjs.org/expo-app-loading/-/expo-app-loading-1.1.2.tgz"
   "version" "1.1.2"
@@ -4236,6 +4236,11 @@
   "version" "9.2.1"
   dependencies:
     "expo-modules-core" "~0.2.0"
+
+"expo-speech@~9.2.0":
+  "integrity" "sha512-H5BCSUpHgStK6GnbHGsErsnUWWhpy4ejxkwK+RP8ERBbsFaT5mUowEWLY+/OiRueTwj35qXzYgeqW/tBv90A3g=="
+  "resolved" "https://registry.npmjs.org/expo-speech/-/expo-speech-9.2.1.tgz"
+  "version" "9.2.1"
 
 "expo-splash-screen@~0.11.2":
   "integrity" "sha512-4jTAs2IDS4rH9A3NK0WhFDIOyLgDExRe0zCf179vRNPZ6HlXCFEQS7Y9RaUF5EFqyYvsPiwaJQyRes3sO4mA+g=="
@@ -6574,22 +6579,22 @@
     "braces" "^3.0.1"
     "picomatch" "^2.2.3"
 
-"mime-db@>= 1.43.0 < 2", "mime-db@1.49.0":
-  "integrity" "sha512-CIc8j9URtOVApSFCQIF+VBkX1RwXp/oMMOrqdyXSBXq5RWNEsRfyj1kiRnQgmNXmHxPoFIxOroKA3zcU9P+nAA=="
-  "resolved" "https://registry.npmjs.org/mime-db/-/mime-db-1.49.0.tgz"
-  "version" "1.49.0"
+"mime-db@>= 1.43.0 < 2", "mime-db@1.52.0":
+  "integrity" "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
+  "resolved" "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz"
+  "version" "1.52.0"
 
 "mime-db@~1.23.0":
   "integrity" "sha1-oxtAcK2uon1zLqMzdApk0OyaZlk="
   "resolved" "https://registry.npmjs.org/mime-db/-/mime-db-1.23.0.tgz"
   "version" "1.23.0"
 
-"mime-types@^2.1.12", "mime-types@~2.1.24":
-  "integrity" "sha512-hJGaVS4G4c9TSMYh2n6SQAGrC4RnfU+daP8G7cSCmaqNjiOoUY0VHCMS42pxnQmVF1GWwFhbHWn3RIxCqTmZ9A=="
-  "resolved" "https://registry.npmjs.org/mime-types/-/mime-types-2.1.32.tgz"
-  "version" "2.1.32"
+"mime-types@^2.1.12", "mime-types@~2.1.34":
+  "integrity" "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw=="
+  "resolved" "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz"
+  "version" "2.1.35"
   dependencies:
-    "mime-db" "1.49.0"
+    "mime-db" "1.52.0"
 
 "mime-types@2.1.11":
   "integrity" "sha1-wlnEcb2oCKhdbNGTtDCl+uRHOzw="
@@ -6728,10 +6733,10 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
-"negotiator@0.6.2":
-  "integrity" "sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw=="
-  "resolved" "https://registry.npmjs.org/negotiator/-/negotiator-0.6.2.tgz"
-  "version" "0.6.2"
+"negotiator@0.6.3":
+  "integrity" "sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg=="
+  "resolved" "https://registry.npmjs.org/negotiator/-/negotiator-0.6.3.tgz"
+  "version" "0.6.3"
 
 "nice-try@^1.0.4":
   "integrity" "sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ=="
@@ -7409,11 +7414,6 @@
   "resolved" "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-2.0.4.tgz"
   "version" "2.0.4"
 
-"react-freeze@^1.0.0":
-  "integrity" "sha512-yQaiOqDmoKqks56LN9MTgY06O0qQHgV4FUrikH357DydArSZHQhl0BJFqGKIZoTqi8JizF9Dxhuk1FIZD6qCaw=="
-  "resolved" "https://registry.npmjs.org/react-freeze/-/react-freeze-1.0.0.tgz"
-  "version" "1.0.0"
-
 "react-is@^16.12.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -7549,12 +7549,11 @@
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.2.0.tgz"
   "version" "3.2.0"
 
-"react-native-screens@^3.13.1", "react-native-screens@>= 3.0.0":
-  "integrity" "sha512-xcrnuUs0qUrGpc2gOTDY4VgHHADQwp80mwR1prU/Q0JqbZN5W3koLhuOsT6FkSRKjR5t40l+4LcjhHdpqRB2HA=="
-  "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-3.13.1.tgz"
-  "version" "3.13.1"
+"react-native-screens@>= 3.0.0", "react-native-screens@3.4.0":
+  "integrity" "sha512-cg+q9MRnVdeOcJyvJtqffoXLur/C2wHA/7IO2+FAipzTlgHbbM1mTuSM7qG+SeiQjoIs4mHOEf7A0ziPKW04sA=="
+  "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-3.4.0.tgz"
+  "version" "3.4.0"
   dependencies:
-    "react-freeze" "^1.0.0"
     "warn-once" "^0.1.0"
 
 "react-native-snap-carousel-chen@^3.9.4":
@@ -7640,7 +7639,7 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.4.3.tgz"
   "version" "0.4.3"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^16.13.1", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@>= 16.8.0", "react@>= 16.x.x", "react@>=15", "react@>=15.0.0", "react@>=16.3.0", "react@>=17.0.1", "react@16.13.1":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^16.13.1", "react@^16.8.0 || ^17.0.0", "react@>= 16.8.0", "react@>= 16.x.x", "react@>=15", "react@>=15.0.0", "react@>=16.3.0", "react@>=17.0.1", "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"

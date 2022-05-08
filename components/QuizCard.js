@@ -96,38 +96,11 @@ AsyncStorage.setItem('attendUserQuiz', JSON.stringify({'marks':m},['marks']))
 
 const saveOpt = (x,ans,i) => { 
 
-// AsyncStorage.getItem( 'attendUserQuiz' )
-// .then( data => {
-
-//   // the string value read from AsyncStorage has been assigned to data
-//   // console.log( data );
-
-//   // transform it back to an object
-//   setStoredScore (JSON.stringify(data));
-// console.log(marks,'--->quiz card');
-
-//   // console.log(data);
-// })
-  // console.log(storedScore.marks,' --->test');
-  
-  //   // if (props.qnIndex + 1 >= Questions.questions.length) {
-  //   //   console.log('End of Quiz');
-  //   //   // props.navigation.navigate('CongratsScreen')
-  //   // } else {
-  //   //   // props.navigation.navigate('QuestionScreen', {
-  //   //   //   index: props.qnIndex + 1,
-  //   //   // });
-  //   // }
-
-
     x.trim() === ans.trim()
     ? mark=mark+1
     : mark=mark+0 ;
   console.log(mark);
   updateScore(mark);
-    // ? updateMarks(1)
-    // : updateMarks(0) ;
-  // console.log(mark);
   
 };
 
